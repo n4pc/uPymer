@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'js/script.js' %}">
+    <title>U-pymer - Categorías</title>
+</head>
+
+<body>
+
+
+  <header>
+
+
+
+    <!--navbar-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+      <a class="navbar-brand" href="#"><img src="{% static 'images/1.jpeg' %}" width="45" height="45" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <hr id="linea-nav">
+            <a class="nav-link" href="./index.html">Sobre nosotros</a>
+
+          </li>
+          <li class="nav-item">
+
+            <a class="nav-link" href="#footer">Contacto</a>
+
+          </li>
+          <li class="nav-item">
+
+            <a class="nav-link" href="categorias.html">Categorías</a>
+            <hr id="linea-nav1">
+          </li>
+
+        </ul>
+        <button type="button" onclick="openNav()" id="botonBuscarpymes" class="btn btn-primary btn-m mr-5">Buscar
+          pymes</button>
+
+        <button type="button" onClick="window.location='./login.html'" class="btn btn-outline-primary"
+          id="loginHref">Login</button>
+
+        <form class="form-inline my-2 my-lg-0">
+
+
+        </form>
+      </div>
+    </nav>
+
+
+
+
+
+
+
+    <!-- alerta de registro-->
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      Presiona <a href="./register.html" class="alert-link">aqui</a>. Para registrarte
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+
+
+
+
+
+    <div>
+      <!-- The overlay -->
+      <div id="myNav" class="overlay mt-5">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <!-- Overlay content -->
+        <div class="overlay-content" id="telon">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar pymes" aria-label="Buscar pymes"
+              aria-describedby="button-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <!-- script cortina boton buscar pymes-->
+
+    <script src="{% static 'js/cortina.js' %}"></script>
+
+  </header>
+
+  
+
+  <H1>Categorías</H1>
+  <div class="flex-container">
+    {% for c in cats %}
+    <div class="card">
+      <a href="panaderia.html">
+        <img src="{% static c.img %} "style="width: 100%" alt="panaderia">
+      </a>
+      <div>
+
+        
+        <div>
+            <p title="{{ c.descripcion }}" >{{ c.nombre }} </p>
+        </div>
+
+
+        <br>
+    
+
+      </div>
+
+    </div>
+    {% endfor %}
+
+    {% extends 'Pymes/base.html' %} 
+
+{% block titulo_principal %} CRUD: Select * {% endblock %}
+
+{% block content %}
+   {% if object_list %}
+        {% for cat in object_list %}
+            <p>Nombre: {{ cat.nombre }}</p>
+            <p>Descripcion: {{ cat.descripcion }}</p>          
+            <td>
+                <a class="btn btn-primary" href="{% url 'edit_cat' cat.id %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'del_cat' cat.id %}">Eliminar</a>
+            </td>           
+            <br>
+        {% endfor %}
+        
+    {% else %}
+        <h1>No hay registros de carrera</h1>
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+  <footer id="footer">
+    <div>
+      <p>Terminos y condiciones | Seguridad y Privacidad <br>
+        Esta tienda esta autorizada por visa para realizar
+        tansacciones eléctrónicas <br>
+        Copyright ® 2020 DUOC UC PAO - SECCION 002D <br>
+        
+        <img src="{% static 'images/whatsapp.png' %}" width="25" alt="whatsapp"> +56954877863. <img src="/assets/images/instagram.png"
+          width="25" alt=""> <a href="https://www.instagram.com/badbunnypr/">https://www.instagram.com/badbunnypr/</a>
+      </p>
+
+    </div>
+  </footer>
+</body>
+
+</html>
