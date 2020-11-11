@@ -27,7 +27,7 @@ class PymeForm(forms.ModelForm):
             'nombre': 'Nombre',
             'rut_empresa': 'Rut de Empresa',
             'direccion': 'Dirección',
-            'cat': 'Categoría de la '
+            'cat': 'Categoría de la'
 
         }
         widgets = {
