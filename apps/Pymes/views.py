@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Cat, Pyme
-from .forms import CatForm, PymeForm
+from .models import Cat, Pyme, Producto
+from .forms import CatForm, PymeForm, ProductoForm
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -61,3 +61,29 @@ class PymeDelete(DeleteView):
     model = Pyme
     template_name = 'Pymes/Pyme_delete.html'
     success_url = reverse_lazy('listar_pyme')
+
+#productos
+class ProductoCreate(CreateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'Pymes/producto_form.html'
+    success_url = reverse_lazy("listar_producto")
+
+
+class ProductoList(ListView):
+    model = Producto
+    template_name = 'Pymes/listar_producto.html'
+    # paginate_by = 4
+
+
+class ProductoUpdate(UpdateView):
+    model = Producto
+    form_class = ProductoForm
+    template_name = 'Pymes/producto_form.html'
+    success_url = reverse_lazy('listar_producto')
+
+
+class ProductoDelete(DeleteView):
+    model = Producto
+    template_name = 'Pymes/producto_delete.html'
+    success_url = reverse_lazy('listar_producto')

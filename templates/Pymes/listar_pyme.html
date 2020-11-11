@@ -1,9 +1,10 @@
 {% extends 'Pymes/base.html' %} 
 
-{% block titulo_pagina %} Categorías - uPymer {% endblock %}
-{% block titulo_principal %} Categorías {% endblock %}
+{% block titulo_pagina %} Pymes - uPymer {% endblock %}
+{% block titulo_principal %} Pymes {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}
    {% if object_list %}
 <table class="table table-sm table-dark">
     <thead>
@@ -42,5 +43,7 @@
         <h1>No hay registros de carrera</h1>
     {% endif %}
         
-    
+    {% else %}
+    <h1>No eres Administrador jajaja xd<h1>
+    {% endif %}
 {% endblock %}

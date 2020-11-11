@@ -37,3 +37,22 @@ class PymeForm(forms.ModelForm):
             'direccion': forms.TextInput(attrs={'class': 'form-control'}),
             'cat': forms.Select(attrs={'class': 'form-control'}),
         }
+
+class ProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = ['nombre', 'descripcion', 'precio', 'pyme']
+
+        labels = {
+            'nombre': 'Nombre',
+            'descripcion': 'Descripción',
+            'precio': 'Precio',
+            'pyme': 'Pyme asociada al producto'
+
+        }
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+            'precio': forms.TextInput(attrs={'class': 'form-control'}),
+            'pyme': forms.Select(attrs={'class': 'form-control'}),
+        }

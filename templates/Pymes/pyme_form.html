@@ -1,13 +1,18 @@
+
 {% extends 'Pymes/base.html' %} 
-{% block titulo_pagina %} Categoría - uPymer {% endblock %}
-{% block titulo_principal %} Formulario Categoría {% endblock %}
+
+{% block titulo_pagina %} Pymes - uPymer {% endblock %}
+{% block titulo_principal %} Formulario Pymes {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}
     <div class="text-left">
     <form method="POST">
         {% csrf_token %}
         {{ form }}
-        <button type="submit">GRABAR</button>
+        <br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
     </div>
+    {% endif %}
 {% endblock %}
