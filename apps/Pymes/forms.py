@@ -17,3 +17,21 @@ class CatForm(forms.ModelForm):
             'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
 
         }
+
+class PymeForm(forms.ModelForm):
+    class Meta:
+        model = Pyme
+        fields = ['nombre', 'rut_empresa', 'direccion', 'cat', 'img']
+
+        labels = {
+            'nombre': 'Nombre',
+            'rut_empresa': 'Rut de Empresa',
+            'direccion': 'Dirección',
+            'cat': 'Categoría de la '
+
+        }
+        widgets = {
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
+
+        }

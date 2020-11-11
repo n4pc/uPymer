@@ -17,6 +17,7 @@ class Pyme(models.Model):
     rut_empresa = models.CharField(max_length=10)
     direccion = models.CharField(max_length=50)
     cat = models.ForeignKey(Cat, on_delete=models.CASCADE)
+    img = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
@@ -29,6 +30,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=50)
     precio = models.IntegerField()
     pyme = models.ForeignKey(Pyme, blank=True, on_delete=models.CASCADE)
+    img = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
