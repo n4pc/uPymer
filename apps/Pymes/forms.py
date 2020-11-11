@@ -18,6 +18,7 @@ class CatForm(forms.ModelForm):
 
         }
 
+
 class PymeForm(forms.ModelForm):
     class Meta:
         model = Pyme
@@ -27,11 +28,12 @@ class PymeForm(forms.ModelForm):
             'nombre': 'Nombre',
             'rut_empresa': 'Rut de Empresa',
             'direccion': 'Dirección',
-            'cat': 'Categoría de la'
+            'cat': 'Categoría de la Pyme'
 
         }
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.TextInput(attrs={'class': 'form-control'}),
-
+            'rut_empresa': forms.TextInput(attrs={'class': 'form-control'}),
+            'dirección': forms.TextInput(attrs={'class': 'form-control'}),
+            'cat': forms.TextInput(attrs={'class': 'form-control'}),
         }

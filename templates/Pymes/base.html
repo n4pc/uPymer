@@ -6,11 +6,13 @@
     <meta charset="UTF-8">
     <title>Django Girls blog</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-   
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 
 <body>
+    <header>
+    </header>
 
     <div class="page-header">
         <h1> {% block titulo_principal %} home {% endblock %} </h1>
@@ -18,6 +20,7 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
+
                 {% block content %} {% endblock %}
             </div>
         </div>
