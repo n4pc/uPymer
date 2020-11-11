@@ -1,0 +1,46 @@
+{% extends 'Pymes/base.html' %} 
+
+{% block titulo_pagina %} Categorías - uPymer {% endblock %}
+{% block titulo_principal %} Categorías {% endblock %}
+
+{% block content %}
+   {% if object_list %}
+<table class="table table-sm table-dark">
+    <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Rut Empresa</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Categoría</th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for pyme in object_list %}
+
+        <tr>
+            <td>{{ pyme.nombre }}</td>
+            <td>{{ pyme.rut_empresa}}</td>
+            <td>{{ pyme.direccion}}</td>
+            <td>{{ pyme.cat}}</td>
+            <td>
+                    <a class="btn btn-primary" href="{% url 'edit_pyme' pyme.id %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger" href="{% url 'del_pyme' pyme.id %}"><i class="fas fa-trash"></i></a>
+            </td>  
+
+        </tr>
+
+    {% endfor %}
+        <tr>
+            <td>
+            <a class="btn btn-primary" href="{% url 'add_pyme' %}"><i class="fas fa-plus"></i></a>
+            </td>
+        </tr>
+  </tbody>
+</table>      
+        
+    {% else %}
+        <h1>No hay registros de carrera</h1>
+    {% endif %}
+        
+    
+{% endblock %}

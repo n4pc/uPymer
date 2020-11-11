@@ -1,11 +1,12 @@
 {% extends 'Pymes/base.html' %} 
-
+{% block titulo_pagina %} Eliminar Categoría - uPymer {% endblock %}
+{% block titulo_principal %} Eliminar Categoría {% endblock %}
 {% block content %}
     <div class="text-center">
         <form method="post">
             {% csrf_token %}
 
-            <p class="delete-msg">Are you sure you want to delete the {{ object.nombre }}?</p>
+            <p class="delete-msg">¿Estás seguro de que quieres eliminar {{ object.nombre }}?</p>
 
             <a href="{% url 'listar_cat' %}" class="btn btn-secondary">NO</a>
             <button class="btn btn-primary" type="submit">Si</button>

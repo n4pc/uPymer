@@ -8,7 +8,9 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 
-# --Otra forma usando clases Generics -------
+# Categorías
+
+
 class CatCreate(CreateView):
     model = Cat
     form_class = CatForm
@@ -34,7 +36,7 @@ class CatDelete(DeleteView):
     template_name = 'Pymes/cat_delete.html'
     success_url = reverse_lazy('listar_cat')
 
-
+#Pymes
 class PymeCreate(CreateView):
     model = Pyme
     form_class = PymeForm
@@ -44,7 +46,7 @@ class PymeCreate(CreateView):
 
 class PymeList(ListView):
     model = Pyme
-    template_name = 'Pymes/listar_Pyme.html'
+    template_name = 'Pymes/listar_pyme.html'
     # paginate_by = 4
 
 
@@ -52,10 +54,10 @@ class PymeUpdate(UpdateView):
     model = Pyme
     form_class = PymeForm
     template_name = 'Pymes/Pyme_form.html'
-    success_url = reverse_lazy('listar_Pyme')
+    success_url = reverse_lazy('listar_pyme')
 
 
 class PymeDelete(DeleteView):
     model = Pyme
     template_name = 'Pymes/Pyme_delete.html'
-    success_url = reverse_lazy('listar_Pyme')
+    success_url = reverse_lazy('listar_pyme')

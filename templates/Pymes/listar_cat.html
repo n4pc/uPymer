@@ -1,6 +1,7 @@
 {% extends 'Pymes/base.html' %} 
 
-{% block titulo_principal %} Listar Categorías {% endblock %}
+{% block titulo_pagina %} Categorías - uPymer {% endblock %}
+{% block titulo_principal %} Categorías {% endblock %}
 
 {% block content %}
    {% if object_list %}
@@ -13,18 +14,22 @@
     </thead>
     <tbody>
         {% for cat in object_list %}
+
         <tr>
             <td>{{ cat.nombre }}</td>
             <td>{{ cat.descripcion }}</td>
+
             <td>
                     <a class="btn btn-primary" href="{% url 'edit_cat' cat.id %}"><i class="fas fa-edit"></i></a>
                     <a class="btn btn-danger" href="{% url 'del_cat' cat.id %}"><i class="fas fa-trash"></i></a>
             </td>  
+
         </tr>
+
     {% endfor %}
         <tr>
             <td>
-            <a class="btn btn-primary" href="{% url 'add_cat' %}">Añadir Categoria</a>
+            <a class="btn btn-primary" href="{% url 'add_cat' %}"><i class="fas fa-plus"></i></a>
             </td>
         </tr>
   </tbody>

@@ -22,7 +22,7 @@ class CatForm(forms.ModelForm):
 class PymeForm(forms.ModelForm):
     class Meta:
         model = Pyme
-        fields = ['nombre', 'rut_empresa', 'direccion', 'cat', 'img']
+        fields = ['nombre', 'rut_empresa', 'direccion', 'cat']
 
         labels = {
             'nombre': 'Nombre',
@@ -34,6 +34,6 @@ class PymeForm(forms.ModelForm):
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'rut_empresa': forms.TextInput(attrs={'class': 'form-control'}),
-            'dirección': forms.TextInput(attrs={'class': 'form-control'}),
-            'cat': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'cat': forms.Select(attrs={'class': 'form-control'}),
         }
