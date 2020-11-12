@@ -1,7 +1,3 @@
-header {
-    margin-bottom: 50px;
-}
-
 .container {
     display: grid;
 }
@@ -84,6 +80,7 @@ hr {
 }
 
 body {
+    margin-top: 0%;
     background: rgb(197, 40, 61);
     background: linear-gradient(90deg, rgba(197, 40, 61, 1) 0%, rgba(11, 29, 81, 1) 57%, rgba(8, 122, 237, 1) 100%);
 }
