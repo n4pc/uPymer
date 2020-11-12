@@ -1,5 +1,6 @@
 .container {
     display: grid;
+    margin-top: 40px;
 }
 
 .jumbotron {
@@ -22,7 +23,6 @@
 #navbar {
     width: 100%;
     position: fixed;
-    margin-top: 0%;
     z-index: 100;
 }
 
@@ -80,7 +80,6 @@ hr {
 }
 
 body {
-    margin-top: 0%;
     background: rgb(197, 40, 61);
     background: linear-gradient(90deg, rgba(197, 40, 61, 1) 0%, rgba(11, 29, 81, 1) 57%, rgba(8, 122, 237, 1) 100%);
 }
@@ -181,4 +180,40 @@ body {
         top: 15px;
         right: 35px;
     }
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    transition: 0.3s;
+    position: relative;
+    color: black;
+    margin-top: 1%;
+    margin: 5%;
+    font-size: 90%;
+    font-family: UberMoveText-Medium, sans-serif;
+    font-weight: 500;
+    background-color: #262626;
+    color: white;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.card>div {
+    position: absolute;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 3%, rgba(255, 255, 255, 0) 100%);
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    padding: 10px;
+}
+
+
+/* On mouse-over, add a deeper shadow */
+
+.card:hover {
+    box-shadow: 0 30px 35px 0 rgba(0, 0, 0, 0.2);
 }

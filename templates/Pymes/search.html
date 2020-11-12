@@ -1,0 +1,30 @@
+{% extends 'Pymes/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    {% for pyme in object_list %}
+    <h1>Resultados de búsqueda</h1>
+        <div class="container">
+        <h2> Pymes <h2>
+        <div class="card">
+      <a href="{% url 'Pymes' pyme.id %}">
+        <img src="/static/img/{{ pyme.img }} "style="width: 100%" alt="panaderia" title="{{ pyme.descripcion }}">
+      </a>
+      <div>
+
+        
+        <div>
+            <p>{{ pyme.nombre }} </p>
+        </div>
+    
+
+      </div>
+
+        </div>
+
+        </div>
+
+    {% endfor %}
+{% endblock content %}

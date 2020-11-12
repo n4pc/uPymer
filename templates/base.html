@@ -2,8 +2,16 @@
 {% load static %}
 <html>
     <head>
-        <title>{% block title %}{% endblock title %}</title>
-        {% block css %} {% endblock css %}
+        <meta charset="UTF-8">
+    <title>{% block titulo_pagina %} home {% endblock %}</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <link rel="icon" href="{% static 'js/script.js' %}">
     </head>
     <body>
     {% block navbar %}
@@ -12,13 +20,6 @@
         
         <div id="nav">
             <ul>            
-                <li class="nav-item"><a href="{% url 'home' %}">inicio</a></li>
-                <li class="nav-item"><a href="{% url 'listar_cat' %}">Listar Categorías</a></li>
-                <li class="nav-item"><a href="{% url 'listar_pyme' %}">Listar Pymes</a></li>
-                <li class="nav-item"><a href="{% url 'listar_producto' %}">Listar Productos</a></li>
-                <li class="nav-item"><a href="#">quiénes somos</a></li>
-                <li class="nav-item"><a href="#">contáctanos</a></li>
-
                 {% if not user.is_authenticated %}        
                 <li class="nav-item"><a href="{% url 'registrar' %}">registrarse</a></li>
                 <li class="nav-item"><a href="{% url 'login' %}">iniciar sesión</a></li>

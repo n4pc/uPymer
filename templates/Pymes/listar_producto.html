@@ -8,6 +8,7 @@
 <table class="table table-sm table-dark">
     <thead>
             <tr>
+                <th scope="col">Imágenes</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Precio</th>
@@ -18,6 +19,7 @@
         {% for prod in object_list %}
 
         <tr>
+             <td><img src= /static/img/{{ prod.img }} style="width: 100px;"/> </td>
             <td>{{ prod.nombre }}</td>
             <td>{{ prod.descripcion}}</td>
             <td>{{ prod.precio}}</td>

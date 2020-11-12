@@ -8,6 +8,7 @@
 <table class="table table-sm table-dark">
     <thead>
             <tr>
+                <th scope="col">Imágen</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripción</th>
             </tr>
@@ -16,6 +17,7 @@
         {% for cat in object_list %}
 
         <tr>
+            <td><img src= /static/img/{{ cat.img }} style="width: 100px;"/> </td>
             <td>{{ cat.nombre }}</td>
             <td>{{ cat.descripcion }}</td>
 

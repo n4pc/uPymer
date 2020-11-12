@@ -4,6 +4,7 @@ from .forms import CatForm, PymeForm, ProductoForm
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 # Create your views here.
 
@@ -49,6 +50,11 @@ class PymeList(ListView):
     template_name = 'Pymes/listar_pyme.html'
     # paginate_by = 4
 
+class Pymes(ListView):
+    model = Pyme
+    template_name = 'Pymes/pagina_pyme.html'
+    # paginate_by = 4
+
 
 class PymeUpdate(UpdateView):
     model = Pyme
@@ -87,3 +93,15 @@ class ProductoDelete(DeleteView):
     model = Producto
     template_name = 'Pymes/producto_delete.html'
     success_url = reverse_lazy('listar_producto')
+
+
+class SearchResultsView(ListView):
+    model = Pyme
+    template_name = 'Pymes/search.html'
+    
+    def get_queryset(self): 
+        query = self.request.GET.get('q')
+        object_list = Pyme.objects.filter(
+            Q(nombre__icontains=query) | Q(descripcion__icontains=query))
+        
+        return object_list

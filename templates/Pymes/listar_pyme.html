@@ -1,45 +1,41 @@
-{% extends 'Pymes/base.html' %} 
-
-{% block titulo_pagina %} Pymes - uPymer {% endblock %}
-{% block titulo_principal %} Pymes {% endblock %}
-
-{% block content %}
-   {% if object_list %}
+{% extends 'Pymes/base.html' %} {% block titulo_pagina %} Pymes - uPymer {% endblock %} {% block titulo_principal %} Pymes {% endblock %} {% block content %} {% if object_list %}
 <table class="table table-sm table-dark">
     <thead>
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Rut Empresa</th>
-                <th scope="col">Dirección</th>
-                <th scope="col">Categoría</th>
-            </tr>
+        <tr>
+            <th scope="col">Imágen</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Rut Empresa</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Categoría</th>
+        </tr>
     </thead>
     <tbody>
         {% for pyme in object_list %}
 
         <tr>
+        <td><img src= /static/img/{{ pyme.img }} style="width: 100px;"/> </td>
             <td>{{ pyme.nombre }}</td>
             <td>{{ pyme.rut_empresa}}</td>
+            <td>{{ pyme.descripcion}}</td>
             <td>{{ pyme.direccion}}</td>
             <td>{{ pyme.cat}}</td>
             <td>
-                    <a class="btn btn-primary" href="{% url 'edit_pyme' pyme.id %}"><i class="fas fa-edit"></i></a>
-                    <a class="btn btn-danger" href="{% url 'del_pyme' pyme.id %}"><i class="fas fa-trash"></i></a>
-            </td>  
+                <a class="btn btn-primary" href="{% url 'edit_pyme' pyme.id %}"><i class="fas fa-edit"></i></a>
+                <a class="btn btn-danger" href="{% url 'del_pyme' pyme.id %}"><i class="fas fa-trash"></i></a>
+            </td>
 
         </tr>
 
-    {% endfor %}
+        {% endfor %}
         <tr>
             <td>
-            <a class="btn btn-primary" href="{% url 'add_pyme' %}"><i class="fas fa-plus"></i></a>
+                <a class="btn btn-primary" href="{% url 'add_pyme' %}"><i class="fas fa-plus"></i></a>
             </td>
         </tr>
-  </tbody>
-</table>      
-        
-    {% else %}
-        <h1>No hay registros de carrera</h1>
-    {% endif %}
+    </tbody>
+</table>
 
-{% endblock %}
+{% else %}
+<h1>No hay registros de carrera</h1>
+{% endif %} {% endblock %}

@@ -1,16 +1,42 @@
-{% block titulo_principal %} CRUD: Select * {% endblock %}
+{% extends 'Usuario/base/base.html' %}
+{% block titulo_pagina %} Usuarios - uPymer {% endblock %}
+{% block titulo_principal %} Usuarios {% endblock %}
 
 {% block content %}
    {% if object_list %}
+<table class="table table-sm table-dark">
+    <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+            </tr>
+    </thead>
+    <tbody>
         {% for user in object_list %}
-            <p>Nombre: {{ user.username }}</p>
-            <p>email: {{ user.email }}</p>      
 
-            <br>
-        {% endfor %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+
+            <td>
+                    <a class="btn btn-primary" href="#"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger" href="#"><i class="fas fa-trash"></i></a>
+            </td>  
+
+        </tr>
+
+    {% endfor %}
+        <tr>
+            <td>
+            <a class="btn btn-primary" href="#"><i class="fas fa-plus"></i></a>
+            </td>
+        </tr>
+  </tbody>
+</table>      
         
     {% else %}
-        <h1>No hay registros de user</h1>
+        <h1>No hay Usuarios</h1>
     {% endif %}
-
+        
+    
 {% endblock %}
