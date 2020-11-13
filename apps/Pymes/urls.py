@@ -17,6 +17,10 @@ urlpatterns = [
 
     path('del_cat/<int:pk>', views.CatDelete.as_view(), name='del_cat'),
 
+    path('categorias', views.MostrarCategorias.as_view(), name='categorias'),
+
+    path('categorias/<int:pk>', views.filtro_pyme, name='categoria'),
+
     #Pymes
     path('add_pyme/', views.PymeCreate.as_view(), name='add_pyme'),
 
@@ -39,7 +43,9 @@ urlpatterns = [
 
     path('del_producto/<int:pk>', views.ProductoDelete.as_view(), name='del_producto'),
 
-    path('<int:pk>', views.Pymes.as_view(), name='Pymes'),
+    path('<int:pk>', views.pymes, name='Pymes'),
+
+
 
 
 

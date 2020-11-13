@@ -1,10 +1,7 @@
 .container {
     display: grid;
     margin-top: 40px;
-}
-
-.jumbotron {
-    height: 400px;
+    align-content: center;
 }
 
 #correo {
@@ -24,6 +21,13 @@
     width: 100%;
     position: fixed;
     z-index: 100;
+}
+
+.jumbotron>div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 
@@ -53,9 +57,6 @@ footer {
 }
 
 @media only screen and (max-width: 991px) {
-    .jumbotron {
-        height: 500px;
-    }
     #linea-nav,
     #linea-nav1 {
         display: block;
@@ -93,6 +94,7 @@ body {
 
 .card {
     height: 200px;
+    width: 200px;
 }
 
 
@@ -130,8 +132,6 @@ body {
     /* 25% from the top */
     width: 70%;
     /* 100% width */
-    text-align: center;
-    /* Centered text/links */
     margin-top: 30px;
     /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
@@ -166,6 +166,12 @@ body {
     top: 20px;
     right: 45px;
     font-size: 60px;
+}
+
+.overlay .jumbotron {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
 }
 
 
@@ -216,4 +222,19 @@ body {
 
 .card:hover {
     box-shadow: 0 30px 35px 0 rgba(0, 0, 0, 0.2);
+}
+
+.minicard {
+    /* Add shadows to create the "card" effect */
+    transition: 0.3s;
+    color: black;
+    font-size: 90%;
+    margin: 10%;
+    font-family: UberMoveText-Medium, sans-serif;
+    font-weight: 500;
+    background-color: #262626;
+    width: 20%;
+    height: 20%;
+    align-items: center;
+    justify-content: flex-end;
 }

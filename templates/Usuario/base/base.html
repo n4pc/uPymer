@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>{% block titulo_pagina %} home {% endblock %}</title>
@@ -13,22 +14,106 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <link rel="icon" href="{% static 'js/script.js' %}">
 </head>
+
 <body>
-<div class="container">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <a class="navbar-brand" href="#"><img src="{% static 'img/1.jpeg' %}" width="45" height="45" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
 
-    
-    {% block content %}
-    <h4>    Bloque de contenido     </h4>
-    {% endblock %}
+                        <a class="nav-link" href="#footer">Contacto</a>
 
-    {% block footer %}
-    {% endblock%}
-</div>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+                    </li>
+                    
+                     <li class="nav-item">
 
-    {% block extrajs %}
-    {% endblock %}
+                        <a class="nav-link" href="{% url 'categorias' %}">Categorías</a>
+
+                    </li>
+                </ul>
+                
+                <button type="button" onclick="openNav()" id="botonBuscarpymes" class="btn btn-primary btn-m mr-5">Buscar
+                    pymes</button> {% if not user.is_authenticated %}
+                <button type="button" onClick="window.location='{% url 'login' %}'" class="btn btn-outline-primary" id="loginHref">Login</button>
+
+                <form class="form-inline my-2 my-lg-0">
+                    {% endif %} {% if user.is_authenticated %}
+
+                    <div style="background-color: white; margin-right: 20px; border-radius: 4px; width: 150px ;height: 35px; margin-top: 4px; margin-bottom: 4px;">
+                        <img src="{%static 'img/usuario.png'%}" width="28" style="margin-top: 4px; margin-left: 4px;" alt="usuario">
+                        <span class="ml-2 mr-4 md-5 mt-2" style="color: black;"><strong>
+
+                                {{ user.get_username }}</strong>
+                        </span>
+
+
+
+                    </div>
+                    <li class="btn btn-light"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+
+                    {% endif %}
+                </form>
+            </div>
+        </nav>
+
+        <div>
+            <!-- The overlay -->
+            <div id="myNav" class="overlay mt-5">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Overlay content -->
+                <div class="overlay-content" id="telon">
+
+                    <form action="{% url 'search_results' %}" method="get">
+                        <div class="input-group mb-3">
+                            <input name="q" type="text" placeholder="Buscar Pymes" class="form-control" aria-describedby="button-addon2" aria-label="Buscar">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <!-- script cortina boton buscar pymes-->
+
+        <script src="{% static 'js/cortina.js' %}"></script>
+
+
+    </header>
+
+    <div class="page-header">
+        <h1> {% block titulo_principal %} home {% endblock %} </h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div>
+                    {% block content %} {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        {% block footer %} {% endblock %}
+    </div>
 
 </body>
+
 </html>

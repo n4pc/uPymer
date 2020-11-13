@@ -2,7 +2,8 @@
 {% block titulo_pagina %} Eliminar Categoría - uPymer {% endblock %}
 {% block titulo_principal %} Eliminar Categoría {% endblock %}
 {% block content %}
-    <div class="text-center">
+{% if user.is_superuser %}
+    <div class="jumbotron">
         <form method="post">
             {% csrf_token %}
 
@@ -12,4 +13,7 @@
             <button class="btn btn-primary" type="submit">Si</button>
         </form>
     </div>
+{% else %}
+            <h1>No puedes acceder a esta página</h1>
+{% endif %}
 {% endblock %}

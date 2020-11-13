@@ -1,4 +1,6 @@
-{% extends 'Pymes/base.html' %} {% block titulo_pagina %} Pymes - uPymer {% endblock %} {% block titulo_principal %} Pymes {% endblock %} {% block content %} {% if object_list %}
+{% extends 'Pymes/base.html' %} {% block titulo_pagina %} Pymes - uPymer {% endblock %} {% block titulo_principal %} Pymes {% endblock %} {% block content %} 
+{% if user.is_superuser %}
+{% if object_list %}
 <table class="table table-sm table-dark">
     <thead>
         <tr>
@@ -38,4 +40,10 @@
 
 {% else %}
 <h1>No hay registros de carrera</h1>
-{% endif %} {% endblock %}
+{% endif %} 
+
+{% else %}
+            <h1>No puedes acceder a esta página</h1>
+{% endif %}
+
+{% endblock %}

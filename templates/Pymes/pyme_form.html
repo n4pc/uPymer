@@ -6,8 +6,8 @@
 
 {% block content %}
 {% if user.is_superuser %}
-    <div class="container mt-3 pb-3">
-    <div class="col-md-5">
+    <div class="jumbotron">
+    <div class="col-md-7">
     <h1>Formulario Pyme</h1>
     <form id="formulario" method="POST" enctype= "multipart/form-data" >
         {% csrf_token %}
@@ -22,9 +22,12 @@
         {% endfor %}
         
         
-        <input type="submit" value="Grabar" class="btn btn-success">
+        <input type="submit" value="Guardar" class="btn btn-success">
     
     </form>
 </div>
-    {% endif %}
+
+    {% else %}
+            <h1>No puedes acceder a esta página</h1>
+{% endif %}
 {% endblock %}

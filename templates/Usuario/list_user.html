@@ -3,6 +3,7 @@
 {% block titulo_principal %} Usuarios {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}
    {% if object_list %}
 <table class="table table-sm table-dark">
     <thead>
@@ -37,6 +38,9 @@
     {% else %}
         <h1>No hay Usuarios</h1>
     {% endif %}
-        
+
+    {% else %}
+    <h1>No puedes ver esta pagina</h1>    
+    {% endif %}
     
 {% endblock %}

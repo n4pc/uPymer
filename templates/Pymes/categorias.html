@@ -1,0 +1,24 @@
+{% extends 'Pymes/base.html' %} {% load static %} {% block content %}
+
+<div class="jumbotron">
+    <h1>Nuestras Categorías</h1>
+    <div>
+        {% for cat in object_list %}
+
+        <div class="card">
+            <a href="{% url 'categoria' cat.id %}">
+                <img src="/static/img/{{ cat.img }} " style="width: 100%" alt="panaderia" title="{{ pyme.descripcion }}">
+            </a>
+            <div>
+                <div>
+                    <p>{{ cat.nombre }} </p>
+                </div>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

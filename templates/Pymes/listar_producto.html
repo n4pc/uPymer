@@ -5,6 +5,7 @@
 
 {% block content %}
    {% if object_list %}
+   {% if user.is_superuser %}
 <table class="table table-sm table-dark">
     <thead>
             <tr>
@@ -44,5 +45,8 @@
         <h1>No hay registros de productos</h1>
     {% endif %}
         
+{% else %}
+            <h1>No puedes acceder a esta página</h1>
+{% endif %}
     
 {% endblock %}

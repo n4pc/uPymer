@@ -4,6 +4,7 @@
 {% block titulo_principal %} Categorías {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}
    {% if object_list %}
 <table class="table table-sm table-dark">
     <thead>
@@ -38,8 +39,10 @@
 </table>      
         
     {% else %}
-        <h1>No hay registros de carrera</h1>
+        <h1>No hay registros de categoría</h1>
     {% endif %}
         
-    
+{% else %}
+            <h1>No puedes acceder a esta página</h1>
+{% endif %}    
 {% endblock %}

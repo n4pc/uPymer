@@ -1,14 +1,13 @@
-{% extends 'Usuario/base/base.html' %} 
+{% extends 'Usuario/base/base.html' %} {% block content %}
 
-{% block content %}
-    <h1>Agregar USUARIO</h1>
-    
+<div class="jumbotron">
+    <h1>Registrarse</h1>
     <div class="content container">
-    <form method="POST">
-        {% csrf_token %} 
-        {{ form.as_p }}
-        <button type="submit">GRABAR</button>
-    </form>
+        <form method="POST">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-m mr-5">Registrarse</button>
+        </form>
     </div>
+</div>
 
 {% endblock %}

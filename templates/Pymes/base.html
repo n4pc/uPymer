@@ -17,19 +17,15 @@
 
 <body>
     <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-                <a class="navbar-brand" href="#"><img src="{% static 'img/1.jpeg' %}" width="45" height="45" alt=""></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+            <a class="navbar-brand" href="#"><img src="{% static 'img/1.jpeg' %}" width="45" height="45" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-
-                        <a class="nav-link" href="./index.html">Sobre nosotros</a>
-
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
 
@@ -38,48 +34,63 @@
                     </li>
                     <li class="nav-item">
 
-                        <a class="nav-link" href="categorias.html">Categorías</a>
+                        <a class="nav-link" href="{% url 'categorias' %}">Categorías</a>
 
                     </li>
+                </ul>
+                <button type="button" onclick="openNav()" id="botonBuscarpymes" class="btn btn-primary btn-m mr-5">Buscar
+                    pymes</button> {% if not user.is_authenticated %}
+                <button type="button" onClick="window.location='{% url 'login' %}'" class="btn btn-outline-primary" id="loginHref">Login</button>
 
-                    </ul>
-                    <button type="button" onclick="openNav()" id="botonBuscarpymes" class="btn btn-primary btn-m mr-5">Buscar
-                    pymes</button>
+                <form class="form-inline my-2 my-lg-0">
+                    {% endif %} {% if user.is_authenticated %}
 
-                    <button type="button" onClick="window.location='./login.html'" class="btn btn-outline-primary"
-                    id="loginHref">Login</button>
+                    <div style="background-color: white; margin-right: 20px; border-radius: 4px; width: 150px ;height: 35px; margin-top: 4px; margin-bottom: 4px;">
+                        <img src="{%static 'img/usuario.png'%}" width="28" style="margin-top: 4px; margin-left: 4px;" alt="usuario">
+                        <span class="ml-2 mr-4 md-5 mt-2" style="color: black;"><strong>
 
-                    <form class="form-inline my-2 my-lg-0">
+                                {{ user.get_username }}</strong>
+                        </span>
 
 
-                    </form>
-                </div>
-            </nav>
 
-            <div>
-      <!-- The overlay -->
-      <div id="myNav" class="overlay mt-5">
+                    </div>
+                    <li class="btn btn-light"><a href="{% url 'logout' %}">Cerrar sesión</a></li>
 
-        <!-- Button to close the overlay navigation -->
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-
-        <!-- Overlay content -->
-        <div class="overlay-content" id="telon">
-          <div class="input-group mb-3">
-                <form action="{% url 'search_results' %}" method="get">
-                <input name="q" type="text" placeholder="Buscar Pymes" class="form-control">
+                    {% endif %}
                 </form>
-          </div>
+            </div>
+        </nav>
+
+        <div>
+            <!-- The overlay -->
+            <div id="myNav" class="overlay mt-5">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <!-- Overlay content -->
+                <div class="overlay-content" id="telon">
+
+                    <form action="{% url 'search_results' %}" method="get">
+                        <div class="input-group mb-3">
+                            <input name="q" type="text" placeholder="Buscar Pymes" class="form-control" aria-describedby="button-addon2" aria-label="Buscar">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+
         </div>
 
-      </div>
+        <!-- script cortina boton buscar pymes-->
 
-
-    </div>
-
-    <!-- script cortina boton buscar pymes-->
-
-    <script src="{% static 'js/cortina.js' %}"></script>
+        <script src="{% static 'js/cortina.js' %}"></script>
 
 
     </header>
@@ -90,11 +101,9 @@
     <div class="content container">
         <div class="row">
             <div class="col-md-8">
-                {% if user.is_superuser %}
-                {% block content %} {% endblock %}
-                {% else %}
-                <h1>No puedes acceder a esta página</h1>
-                {% endif %}
+                <div>
+                    {% block content %} {% endblock %}
+                </div>
             </div>
         </div>
     </div>

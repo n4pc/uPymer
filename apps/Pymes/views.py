@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import Cat, Pyme, Producto
 from .forms import CatForm, PymeForm, ProductoForm
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -24,6 +25,20 @@ class CatList(ListView):
     template_name = 'Pymes/listar_cat.html'
     # paginate_by = 4
 
+class MostrarCategorias(ListView):
+    model = Cat
+    template_name = 'Pymes/categorias.html'
+
+
+def filtro_pyme(request, pk):
+    pymes = Pyme.objects.filter(cat_id=pk)
+    return render(request, "Pymes/filtrar_categoria.html", {'pymes': pymes})
+
+
+def pymes(request, pk):
+    pymes = get_object_or_404(Pyme, pk=pk)
+    prod = Producto.objects.filter(pyme_id=pk)
+    return render(request, 'Pymes/pagina_pyme.html', {'pymes': pymes, 'prod': prod})
 
 class CatUpdate(UpdateView):
     model = Cat
@@ -42,17 +57,12 @@ class PymeCreate(CreateView):
     model = Pyme
     form_class = PymeForm
     template_name = 'Pymes/Pyme_form.html'
-    success_url = reverse_lazy("listar_Pyme")
+    success_url = reverse_lazy("listar_pyme")
 
 
 class PymeList(ListView):
     model = Pyme
     template_name = 'Pymes/listar_pyme.html'
-    # paginate_by = 4
-
-class Pymes(ListView):
-    model = Pyme
-    template_name = 'Pymes/pagina_pyme.html'
     # paginate_by = 4
 
 
