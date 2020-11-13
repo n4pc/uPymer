@@ -12,6 +12,6 @@ https://github.com/n4pc/uPymer/
 
 Credenciales:
 
-admin : admin,
+admin : admin
 
 n4pc : CWHu8UQr9FiMV6!
