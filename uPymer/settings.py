@@ -26,7 +26,8 @@ SECRET_KEY = '$@v(o9xqja2_f4z#3wg*)ve!b@mg2r#v50kj#nmyq&t44t=64a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['152.174.175.46', 
+'localhost']
 
 
 # Application definition
@@ -40,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.Pymes',
     'apps.Usuario',
+    'social_django',  # <--- this
+    'social.apps.django_app.default',
+    'rest_framework',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', # <--- this
 ]
 
 ROOT_URLCONF = 'uPymer.urls'
@@ -65,10 +71,27 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = [
+                'social.backends.facebook.FacebookAppOAuth2',
+                'social.backends.facebook.FacebookOAuth2',
+                'django.contrib.auth.backends.ModelBackend',
+                'social_core.backends.facebook.FacebookOAuth2',
+]
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '2770463126605279'
+SOCIAL_AUTH_FACEBOOK_SECRET = '55df989dedf5e57a330bc1f31c5b89b8'
+
+
 
 WSGI_APPLICATION = 'uPymer.wsgi.application'
 
@@ -103,6 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -121,13 +146,38 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 
-CRISPY_TEMPLATE_PACK = 'uni_form'
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/img/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'img')
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static-only')
 
-
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+# PWA
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+
+PWA_APP_NAME = 'uPymer'
+PWA_APP_DESCRIPTION = 'uPymer Web App DUOC'
+PWA_APP_THEME_COLOR = '#87EFC3'
+PWA_APP_BACKGROUND_COLOR = '#fff'
+PWA_APP_ICONS = [
+    {
+        'src': '/static/img/1-s.png',
+        'sizes': '128x128'
+    },
+    {
+        'src': '/static/img/1-m.png',
+        'sizes': '256x256'
+    },
+    {
+        'src': '/static/img/1-l.png',
+        'sizes': '512x512'
+    }
+]
+
+
+
+

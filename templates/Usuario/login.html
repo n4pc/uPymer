@@ -1,14 +1,8 @@
-{% extends 'Usuario/base/base.html' %} {% load static %} {% block title %} Registro {% endblock %}
-
-<head>
-    {% block head %} {% endblock %}
-</head>
-{% block header %} {% endblock %} {% block content %}
-
-
+{% extends 'Usuario/base/base.html' %} {% load static %} {% block title %} Iniciar Sesion - uPymer {% endblock %}
+{% block content%}
 
 <div id="registro" class="jumbotron mt-5">
-    <h1 class="display">Login</h1><br>
+    <h1 class="display">Iniciar Sesión</h1><br>
     <form method="POST" id="formulario">
         {% csrf_token %}
 
@@ -19,14 +13,14 @@
         </div>
 
         <div class="form-group">
-            <label for="password">Password</label><br>
+            <label for="password">Contraseña</label><br>
             <input name="password" class="form-control" type="password" />
             <div class="bg-danger mt-1">{{ form.errors.password }}</div>
         </div>
 
         {% if form.non_field_errors %}
         <div class="form-group">
-            <div class="bg-danger mt-1 p-2">Login incorrecto!</div>
+            <div class="bg-danger mt-1 p-2">Usuario o contraseña incorrectos</div>
         </div>
         {% endif %} {{form.non_field_errors}}
 
@@ -35,6 +29,9 @@
         </div>
 
     </form>
+    <div>
+        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+    </div>
     <div>
         <p>¿No tienes una cuenta? <a href={% url 'registrar' %}>Regístrate aquí</a></p>
     </div>

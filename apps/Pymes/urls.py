@@ -1,6 +1,9 @@
 from django.urls import path, include
 from . import views
 from .views import SearchResultsView
+from rest_framework.urlpatterns import format_suffix_patterns
+from apps.Pymes import views
+
 
 urlpatterns = [
 
@@ -46,8 +49,20 @@ urlpatterns = [
     path('<int:pk>', views.pymes, name='Pymes'),
 
 
+     #API rest 
 
-
+    path('apiProducto/', views.API_objectsProducto.as_view()),
+    path('apiProducto/<int:pk>/', views.API_objects_detailsProducto.as_view()),
+    path('apiPyme/', views.API_objectsPyme.as_view()),
+    path('apiPyme/<int:pk>/', views.API_objects_detailsPyme.as_view()),
 
 ]
+   
+   
+
+urlpatterns = format_suffix_patterns(urlpatterns)
+
+
+
+
 

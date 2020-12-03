@@ -5,9 +5,9 @@
     <div>
         {% for cat in object_list %}
 
-        <div class="card">
+        <div class="card" style="height: 300px;">
             <a href="{% url 'categoria' cat.id %}">
-                <img src="/static/img/{{ cat.img }} " style="width: 100%" alt="panaderia" title="{{ pyme.descripcion }}">
+                <img src="/static/img/{{ cat.img }} " style="width: 250px; height: 250px;" alt="panaderia" title="{{ pyme.descripcion }}">
             </a>
             <div>
                 <div>

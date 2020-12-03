@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 <!-- home.html -->
-{% block title %}Home Page{% endblock title %} {% block content %}
-<h2>Home</h2>
-{% if user.is_authenticated %}
+{% block title %}Home Page{% endblock title %} {% block content %} {% if user.is_authenticated %}
 <div class="container">
 
     <div class="jumbotron">

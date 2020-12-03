@@ -2,13 +2,13 @@
 
 <div class="jumbotron">
     <h1>Resultados de búsqueda</h1>
-    <h2> Pymes </h2>
+    <h2> Tiendas </h2>
     <div>
         {% for pyme in object_list %}
 
-        <div class="card">
+        <div class="card" style="height: 300px;">
             <a href="{% url 'Pymes' pyme.id %}">
-                <img src="/static/img/{{ pyme.img }} " style="width: 100%" alt="panaderia" title="{{ pyme.descripcion }}">
+                <img src="/static/img/{{ pyme.img }} " style="width: 250px; height: 250px" alt="panaderia" title="{{ pyme.descripcion }}">
             </a>
             <div>
                 <div>

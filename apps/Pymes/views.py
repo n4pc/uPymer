@@ -6,6 +6,8 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.db.models import Q
 from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import ProductoSerializer,PymeSerializer
 
 # Create your views here.
 
@@ -115,3 +117,20 @@ class SearchResultsView(ListView):
             Q(nombre__icontains=query) | Q(descripcion__icontains=query))
         
         return object_list
+
+
+class API_objectsProducto(generics.ListCreateAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+    
+class API_objects_detailsProducto(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Producto.objects.all()
+    serializer_class = ProductoSerializer
+
+class API_objectsPyme(generics.ListCreateAPIView):
+    queryset = Pyme.objects.all()
+    serializer_class = PymeSerializer
+    
+class API_objects_detailsPyme(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Pyme.objects.all()
+    serializer_class = PymeSerializer

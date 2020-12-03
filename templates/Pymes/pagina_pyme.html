@@ -3,37 +3,33 @@
 <!--Acerca de nosotros-->
 
 
-<div class="jumbotron">
+<div class="tienda" style="background-image: url(/static/img/{{ pymes.img }} ); ">
     <h1>{{ pymes.nombre }}</h1>
-    <div>
-        <div>
-            <p>{{ pymes.descripcion }}</p>
-        </div>
-
-
-        <img src=/static/img/{{ pymes.img }} style="width: 30%;">
-
-    </div>
+    <p>{{ pymes.descripcion }}</p>
 </div>
 
 
 
 <!--Listar productos-->
-<div class="jumbotron">
+<div class="jumbotron ">
     <h1>Nuestros Productos</h1>
     <div>
         {% for prod in prod %}
 
         <div class="card">
-            <img src="/static/img/{{ prod.img }} " style="width: 100%; height: 100%" title="{{ prod.descripcion }}">
+
+            <div>
+                <img src="/static/img/{{ prod.img }} " style="width: 250px; height: 250px " title="{{ prod.descripcion }} ">
+            </div>
             <div>
                 <div>
-                    <p>{{ prod.nombre }} - ${{ prod.precio }}</p>
-
+                    <h3>{{ prod.nombre }}</h3>
+                </div>
+                <div>
+                    <p> ${{ prod.precio }}</p>
                 </div>
             </div>
         </div>
-
 
         {% endfor %}
     </div>
